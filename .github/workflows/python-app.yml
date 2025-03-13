@@ -39,5 +39,3 @@ jobs:
     - name: Test with pytest
       run: |
         pytest Tests
-      env:
-        PYTEST_ADDOPTS: "--driver Chrome --headless"
