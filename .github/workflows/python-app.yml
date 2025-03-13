@@ -30,9 +30,7 @@ jobs:
         if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
     - name: Install ChromeDriver
       run: |
-        CHROME_VERSION=$(google-chrome --version | grep -oP '\d+.\d+.\d+')
-        DRIVER_VERSION=$(curl -s "https://chromedriver.storage.googleapis.com/LATEST_RELEASE_$CHROME_VERSION")
-        wget -N "https://chromedriver.storage.googleapis.com/$DRIVER_VERSION/chromedriver_linux64.zip" -P /tmp/
+        wget -N "https://storage.googleapis.com/chrome-for-testing-public/134.0.6998.88/linux64/chromedriver-linux64.zip"  -P /tmp/
         unzip /tmp/chromedriver_linux64.zip -d /usr/local/bin/
         chmod +x /usr/local/bin/chromedriver
     - name: Lint with flake8
