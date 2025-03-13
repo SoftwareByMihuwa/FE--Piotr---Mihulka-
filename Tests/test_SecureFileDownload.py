@@ -5,11 +5,13 @@ import time
 import os
 from pathlib import Path
 from selenium import webdriver
+from selenium.webdriver.chrome.service import Service
+from webdriver_manager.chrome import ChromeDriverManager
 
 chrome_options = edit_chrome_options()
 
 def test_secure_download():
-    driver = webdriver.Chrome(options=chrome_options)
+    driver = webdriver.Chrome(service=Service(ChromeDriverManager().install()), options=chrome_options)
     try:
         # Navigate to secure download page
         driver.get('https://admin:admin@the-internet.herokuapp.com/download_secure')

@@ -5,11 +5,13 @@ from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 from Utilities import edit_chrome_options
+from selenium.webdriver.chrome.service import Service
+from webdriver_manager.chrome import ChromeDriverManager
 
 chrome_options = edit_chrome_options()
 
 def test_exit_intent():
-    driver = webdriver.Chrome(options=chrome_options)
+    driver = webdriver.Chrome(service=Service(ChromeDriverManager().install()), options=chrome_options)
     try:
         # Navigate to exit intent page
         driver.get('https://the-internet.herokuapp.com/exit_intent')
