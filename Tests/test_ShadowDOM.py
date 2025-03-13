@@ -1,10 +1,12 @@
 import pytest
 from selenium.webdriver.common.by import By
-from Utilities import setup_driver
+from Utilities import edit_chrome_options
+from selenium import webdriver
 
-driver = setup_driver()
+chrome_options = edit_chrome_options()
 
 def test_first_shadowDOM():
+    driver = webdriver.Chrome(options=chrome_options)
     try:
         # Navigate to shadow DOM page
         driver.get('https://the-internet.herokuapp.com/shadowdom')
@@ -21,6 +23,7 @@ def test_first_shadowDOM():
         print("Test completed")
 
 def test_second_shadowDOM():
+    driver = webdriver.Chrome(options=chrome_options)
     try:
         # Navigate to shadow DOM page
         driver.get('https://the-internet.herokuapp.com/shadowdom')

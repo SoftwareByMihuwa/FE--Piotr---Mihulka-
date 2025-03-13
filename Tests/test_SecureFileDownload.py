@@ -1,13 +1,15 @@
 import pytest
 from selenium.webdriver.common.by import By
-from Utilities import setup_driver
+from Utilities import edit_chrome_options
 import time
 import os
 from pathlib import Path
+from selenium import webdriver
 
-driver = setup_driver()
+chrome_options = edit_chrome_options()
 
 def test_secure_download():
+    driver = webdriver.Chrome(options=chrome_options)
     try:
         # Navigate to secure download page
         driver.get('https://admin:admin@the-internet.herokuapp.com/download_secure')

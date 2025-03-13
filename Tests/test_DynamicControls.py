@@ -2,9 +2,11 @@ import pytest
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
-from Utilities import setup_driver
+from Utilities import edit_chrome_options
+from selenium import webdriver
 
-driver = setup_driver()
+chrome_options = edit_chrome_options()
+driver = webdriver.Chrome(options=chrome_options)
 driver.get('https://the-internet.herokuapp.com/dynamic_controls')
 
 def test_dynamic_controls_checkbox_remove():

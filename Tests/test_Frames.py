@@ -1,10 +1,12 @@
 import pytest
 from selenium.webdriver.common.by import By
-from Utilities import setup_driver
+from Utilities import edit_chrome_options
+from selenium import webdriver
 
-driver = setup_driver()
+chrome_options = edit_chrome_options()
 
 def test_nested_frames():
+    driver = webdriver.Chrome(options=chrome_options)
     try:
         # Navigate to nested frames page
         driver.get('https://the-internet.herokuapp.com/nested_frames')
@@ -54,6 +56,7 @@ def test_nested_frames():
         print("Test completed")
 
 def test_iframes():
+    driver = webdriver.Chrome(options=chrome_options)
     try:
         # Navigate to iframes page
         driver.get('https://the-internet.herokuapp.com/iframe')

@@ -1,11 +1,13 @@
 import pytest
 from selenium.webdriver.common.action_chains import ActionChains
 from selenium.webdriver.common.by import By
-from Utilities import setup_driver
+from Utilities import edit_chrome_options
+from selenium import webdriver
 
-driver = setup_driver()
+chrome_options = edit_chrome_options()
 
 def test_drag_and_drop_positive():
+    driver = webdriver.Chrome(options=chrome_options)
     try:
         # Navigate to drag and drop page
         driver.get('https://the-internet.herokuapp.com/drag_and_drop')
@@ -29,6 +31,7 @@ def test_drag_and_drop_positive():
 
 
 def test_drag_and_drop_negative():
+    driver = webdriver.Chrome(options=chrome_options)
     try:
         driver.get('https://the-internet.herokuapp.com/drag_and_drop')
         # Find source and target elements
