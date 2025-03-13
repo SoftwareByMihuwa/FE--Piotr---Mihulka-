@@ -25,11 +25,14 @@ jobs:
         python-version: "3.10"
     - name: Install dependencies
       run: |
-        sudo apt-get update
-        sudo apt-get install -y chromium-browser chromium-chromedriver
         python -m pip install --upgrade pip
         pip install flake8 pytest
         if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
+    - name: Install ChromeDriver
+      run: |
+        wget -N "https://storage.googleapis.com/chrome-for-testing-public/134.0.6998.88/linux64/chromedriver-linux64.zip"  -P /tmp/
+        unzip /tmp/chromedriver-linux64.zip -d /usr/local/bin/
+        chmod +x /usr/local/bin/chromedriver-linux64/chromedriver
     - name: Lint with flake8
       run: |
         # stop the build if there are Python syntax errors or undefined names
