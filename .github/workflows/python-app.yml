@@ -25,6 +25,8 @@ jobs:
         python-version: "3.10"
     - name: Install dependencies
       run: |
+        sudo apt-get update
+        sudo apt-get install -y chromium-browser chromium-chromedriver
         python -m pip install --upgrade pip
         pip install flake8 pytest
         if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
@@ -37,3 +39,5 @@ jobs:
     - name: Test with pytest
       run: |
         pytest Tests
+      env:
+        PYTEST_ADDOPTS: "--driver Chrome --headless"
